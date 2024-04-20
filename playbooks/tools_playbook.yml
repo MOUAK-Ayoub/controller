@@ -1,9 +1,5 @@
 
 ---
-- hosts: localhost
-  become: yes
-
-  tasks:
    - name: yum update
       yum:
         name: '*'
