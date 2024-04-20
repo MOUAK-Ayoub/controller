@@ -5,12 +5,12 @@
   become: yes
 
 - name: Include tools_playbook
-  import_playbook: tools_playbook.yaml
+  import_playbook: tools_playbook.yml
 
 - name: Include jenkins_playbook
-  import_playbook: jenkins_playbook.yaml
+  import_playbook: jenkins_playbook.yml
 
 - name: Include tools_playbook
-  import_playbook: docker_playbook_dnf.yaml
+  import_playbook: docker_playbook_dnf.yml
 
 
