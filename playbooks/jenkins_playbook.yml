@@ -11,8 +11,8 @@
 
   - name: Import jenkins key from url
     ansible.builtin.rpm_key:
-      state: present
       key: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+      state: present
 
   - name: yum update
     yum:

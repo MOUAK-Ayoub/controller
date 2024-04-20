@@ -11,7 +11,7 @@
 
    - name: Install java
      yum:
-        name: java-1.8.0-openjdk-devel
+        name: java-17-openjdk-devel
         state: present
 
    - name: Check the maven directory exists
@@ -43,8 +43,6 @@
         - export M2_HOME=/opt/maven
         - export M2=$M2_HOME/bin
         - export PATH=$M2:$PATH
-     when: not maven_dir.stat.exists
 
    - name: apply env variables
      command: "source .bashrc"
-     when: not maven_dir.stat.exists
