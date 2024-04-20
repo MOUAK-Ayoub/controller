@@ -1,8 +1,7 @@
 ---
 
-- name: Install docker in develop servers
-  hosts: dev
-  gather_facts: false
+- name: Install docker
+  hosts: localhost
   become: true
   tasks:
 

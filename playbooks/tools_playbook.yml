@@ -1,0 +1,50 @@
+
+---
+- hosts: localhost
+  become: yes
+
+  tasks:
+   - name: yum update
+      yum:
+        name: '*'
+        state: latest
+
+   - name: Install java
+      yum:
+        name: java-1.8.0-openjdk-devel
+        state: present
+
+   - name: Check the prometheus directory exists
+     stat:
+       path: /opt/maven
+     register: maven_dir
+
+   - name: Download maven
+     get_url:
+       url: "https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
+       dest: /tmp/
+     when: not maven_dir.stat.exists
+
+   - name: Extract MAVEN tar
+     unarchive:
+       src: /tmp/apache-maven-3.6.3-bin.tar.gz
+       dest: /opt
+     when: not maven_dir.stat.exists
+
+   - name:  rename maven folder
+     command: "mv /opt/apache-maven-3.6.3 /opt/maven"
+     when: not maven_dir.stat.exists
+
+   - name: Set maven env variables
+     lineinfile:
+       dest: .bashrc
+       line: "{{ item }}"
+     loop:
+        - export M2_HOME=/opt/maven
+        - export M2=$M2_HOME/bin
+        - export PATH=$M2:$PATH
+     when: not maven_dir.stat.exists
+
+   - name: apply env variables
+     command: "source .bashrc"
+     when: not maven_dir.stat.exists

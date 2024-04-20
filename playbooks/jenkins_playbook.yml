@@ -19,11 +19,6 @@
       name: '*'
       state: latest
 
-  - name: Install java
-    yum:
-      name: java-1.8.0-openjdk-devel
-      state: present
-
   - name: Install jenkins
     yum:
       name: jenkins
