@@ -11,7 +11,7 @@
 
     - name: Install java
       yum:
-        name: java-{{java_version}}-openjdk
+        name: "java-{{java_version}}-openjdk"
         state: present
 
     - name: Check the maven directory exists
@@ -27,7 +27,7 @@
 
     - name: Extract MAVEN tar
       unarchive:
-        src: /tmp/apache-maven-{{maven_version}}-bin.tar.gz
+        src: "/tmp/apache-maven-{{maven_version}}-bin.tar.gz"
         dest: /opt
       when: not maven_dir.stat.exists
 
