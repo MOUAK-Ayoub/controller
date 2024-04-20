@@ -4,15 +4,28 @@
   vars_files:
     - "variables.yml"
   tasks:
-    - name: yum update
-      yum:
-        name: '*'
-        state: latest
 
-    - name: Install java
-      yum:
-        name: "java-{{java_version}}-openjdk"
-        state: present
+    - name: Check the maven directory exists
+      stat:
+        path: "/usr/lib/java_{{java_version}}"
+      register: java_dir
+
+
+    - name: Download java
+      get_url:
+        url: "https://builds.openlogic.com/downloadJDK/openlogic-openjdk/{{java_version}}/openlogic-openjdk-{{java_version}}-linux-x64.tar.gz"
+        dest: /tmp/
+      when: not java_dir.stat.exists
+
+    - name: Extract java tar
+      unarchive:
+        src: "/tmp/openlogic-openjdk-{{java_version}}-linux-x64.tar.gz"
+        dest: /usr/lib/
+      when: not java_dir.stat.exists
+
+    - name: rename java folder
+      command: "mv /usr/lib/openlogic-openjdk-{{java_version}}-linux-x64.tar.gz /usr/lib/java_{{java_version}}"
+      when: not java_dir.stat.exists
 
     - name: Check the maven directory exists
       stat:
@@ -40,9 +53,10 @@
         dest: /etc/bashrc
         line: "{{ item }}"
       loop:
+        - export JAVA_HOME=/usr/lib/java_{{java_version}}
         - export M2_HOME=/opt/maven
         - export M2=$M2_HOME/bin
-        - export PATH=$M2:$PATH
+        - export PATH=$JAVA_HOME:$M2:$PATH
 
     - name: apply env variables
       command: "source /etc/bashrc"
