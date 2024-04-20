@@ -11,7 +11,7 @@
 
    - name: Install java
      yum:
-        name: java
+        name: java-18-openjdk
         state: present
 
    - name: Check the maven directory exists
@@ -45,4 +45,4 @@
         - export PATH=$M2:$PATH
 
    - name: apply env variables
-     command: "source .bashrc"
+     command: "source /etc/§bashrc"
