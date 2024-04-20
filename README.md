@@ -1,12 +1,7 @@
--- Installation
+##Installation
 
 
 ```bash
-USER="cloud_user"
-# log as root and let the use sudo without password
-sudo -i
-sudo echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-exit
 
 sudo yum install -y git
 

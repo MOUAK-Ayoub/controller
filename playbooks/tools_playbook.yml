@@ -37,7 +37,7 @@
 
    - name: Set maven env variables
      lineinfile:
-       dest: .bashrc
+       dest: /etc/bashrc
        line: "{{ item }}"
      loop:
         - export M2_HOME=/opt/maven
