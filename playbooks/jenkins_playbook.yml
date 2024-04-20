@@ -35,7 +35,7 @@
       insertbefore: '\[Install\]'
       line: "{{ item }}"
     loop:
-      - "ENVIRONMENT=\"JAVA_HOME=/usr/lib/java_{{java_version}}\""
+      - "Environment=\"JAVA_HOME=/usr/lib/java_{{java_version}}\""
 
   - name: Start jenkins
     ansible.builtin.systemd:
