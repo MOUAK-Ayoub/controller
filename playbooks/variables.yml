@@ -1,5 +1,6 @@
 
 ---
 
+user: cloud_user
 java_version: 17.0.10+7
 maven_version: 3.6.3
