@@ -2,7 +2,8 @@
 ---
 - hosts: localhost
   become: yes
-
+  vars_files:
+    - "variables.yml"
   tasks:
   - name: Download Long Term Jenkins release
     get_url:
@@ -27,6 +28,14 @@
   - name: daemon-reload to pick up config changes
     ansible.builtin.systemd:
       daemon_reload: yes
+
+  - name: Set maven env variables
+    lineinfile:
+      dest: /etc/systemd/system/jenkins.service
+      insertbefore: "[Install]"
+      line: "{{ item }}"
+    loop:
+      - "ENVIRONMENT JAVA_HOME=/usr/lib/java_{{java_version}}"
 
   - name: Start jenkins
     ansible.builtin.systemd:
