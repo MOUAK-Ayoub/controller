@@ -5,7 +5,7 @@
     - "variables.yml"
   tasks:
 
-    - name: Check the maven directory exists
+    - name: Check the java directory exists
       stat:
         path: "/usr/lib/java_{{java_version}}"
       register: java_dir
@@ -24,7 +24,7 @@
       when: not java_dir.stat.exists
 
     - name: rename java folder
-      command: "mv /usr/lib/openlogic-openjdk-{{java_version}}-linux-x64.tar.gz /usr/lib/java_{{java_version}}"
+      command: "mv /tmp/openlogic-openjdk-{{java_version}}-linux-x64.tar.gz /usr/lib/java_{{java_version}}"
       when: not java_dir.stat.exists
 
     - name: Check the maven directory exists
