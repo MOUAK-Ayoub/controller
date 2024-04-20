@@ -5,12 +5,12 @@
 
   tasks:
    - name: yum update
-      yum:
+     yum:
         name: '*'
         state: latest
 
    - name: Install java
-      yum:
+     yum:
         name: java-1.8.0-openjdk-devel
         state: present
 
