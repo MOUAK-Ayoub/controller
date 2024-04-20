@@ -32,7 +32,7 @@
   - name: Set java_homr in systemd/jenkins
     lineinfile:
       dest: /etc/systemd/system/jenkins.service
-      insertbefore: "\[Install\]"
+      insertbefore: '\[Install\]'
       line: "{{ item }}"
     loop:
       - "ENVIRONMENT=\"JAVA_HOME=/usr/lib/java_{{java_version}}\""
