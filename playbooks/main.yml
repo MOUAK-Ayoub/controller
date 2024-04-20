@@ -3,14 +3,14 @@
 - name: Install controller host tools
   hosts: localhost
   become: yes
-  tasks:
-    - name: Include tools_playbook
-      import_playbook: tools_playbook.yaml
+    -
+  - name: Include tools_playbook
+    import_playbook: tools_playbook.yaml
 
-    - name: Include jenkins_playbook
-      import_playbook: jenkins_playbook.yaml
+  - name: Include jenkins_playbook
+    import_playbook: jenkins_playbook.yaml
 
-    - name: Include tools_playbook
-      import_playbook: docker_playbook_dnf.yaml
+  - name: Include tools_playbook
+    import_playbook: docker_playbook_dnf.yaml
 
 

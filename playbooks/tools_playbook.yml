@@ -1,5 +1,9 @@
 
 ---
+- hosts: localhost
+  become: yes
+
+  tasks:
    - name: yum update
       yum:
         name: '*'
@@ -10,7 +14,7 @@
         name: java-1.8.0-openjdk-devel
         state: present
 
-   - name: Check the prometheus directory exists
+   - name: Check the maven directory exists
      stat:
        path: /opt/maven
      register: maven_dir
