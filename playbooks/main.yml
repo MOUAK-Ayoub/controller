@@ -3,7 +3,7 @@
 - name: Install controller host tools
   hosts: localhost
   become: yes
-  roles:
+  tasks:
     - name: Include tools_playbook
       import_playbook: tools_playbook.yaml
 
