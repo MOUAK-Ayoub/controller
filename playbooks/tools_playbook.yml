@@ -45,4 +45,4 @@
         - export PATH=$M2:$PATH
 
     - name: apply env variables
-      command: "source /etc/§bashrc"
+      command: "source /etc/bashrc"
