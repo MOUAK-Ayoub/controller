@@ -9,7 +9,6 @@ exit
 
 chmod +x scripts/*
 
-
 # Install python
 ./scripts/python_installation.sh
 # Install ansible
@@ -17,3 +16,6 @@ chmod +x scripts/*
 
 # Install jenkins, docker,..etc
 ansible-playbook  playbooks/main.yml
+
+# Reboot server
+reboot
