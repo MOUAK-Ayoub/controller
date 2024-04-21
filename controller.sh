@@ -1,11 +1,5 @@
 #!/bin/bash
 
-USER="cloud_user"
-# log as root and let the use sudo without password
-sudo -i
-sudo echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-exit
-
 
 chmod +x scripts/*
 
