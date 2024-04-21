@@ -24,7 +24,7 @@
         name: jenkins
         state: latest
 
-    - name: Set java_homr in systemd/jenkins
+    - name: Set java_home in systemd/jenkins
       lineinfile:
         dest: /etc/systemd/system/jenkins.service
         insertbefore: '\[Install\]'
