@@ -15,5 +15,5 @@ sudo rm -f /usr/bin/python3
 sudo rm -f /usr/bin/pip3
 sudo ln -s /usr/local/python3.9/bin/python3.9 /usr/bin/python3
 sudo ln -s /usr/local/python3.9/bin/pip3.9 /usr/bin/pip3
-python3 --verion
+python3 --version
 pip3 --version
