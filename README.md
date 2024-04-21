@@ -11,6 +11,7 @@ chmod +x controller.sh
 
 # log as root and let the user sudo without password
 sudo -i
+# Put your user here
 USER="cloud_user"
 echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 exit
