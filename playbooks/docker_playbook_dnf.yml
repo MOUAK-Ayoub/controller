@@ -7,7 +7,6 @@
     - "variables.yml"
   tasks:
 
-
     - name: Uninstall old versions
       yum:
         name:
