@@ -1,6 +1,7 @@
 #!/bin/bash
 
 
+
 chmod +x scripts/*
 
 # Install python

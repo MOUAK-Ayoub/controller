@@ -9,10 +9,11 @@ git clone https://github.com/MOUAK-Ayoub/controller.git
 cd controller
 chmod +x controller.sh
 
+# log as root and let the user sudo without password
+sudo -i
 USER="cloud_user"
-# log as root and let the use sudo without password
-sudo echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-
+echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+exit
 
 # Execute script
 ./controller.sh
