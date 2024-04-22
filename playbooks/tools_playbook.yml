@@ -55,7 +55,7 @@
       loop:
         - export JAVA_HOME=/usr/lib/java_{{java_version}}
         - export M2_HOME=/opt/maven
-        - export PATH=$JAVA_HOME/bin:$M2/bin:$PATH
+        - export PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH
 
     - name: apply env variables
       shell: "source /etc/bashrc"
