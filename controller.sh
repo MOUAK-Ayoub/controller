@@ -18,4 +18,4 @@ fi
 ansible-playbook  playbooks/main.yml
 
 # Reboot server
-reboot
+sudo reboot
