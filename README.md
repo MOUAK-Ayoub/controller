@@ -19,3 +19,5 @@ exit
 # Execute script
 ./controller.sh
 ```
+
+### Tested on Centos 7
