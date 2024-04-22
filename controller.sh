@@ -17,5 +17,8 @@ fi
 # Install jenkins, docker,..etc
 ansible-playbook  playbooks/main.yml
 
+if  (( $?==0 ))
+then
 # Reboot server
 sudo reboot
+fi
