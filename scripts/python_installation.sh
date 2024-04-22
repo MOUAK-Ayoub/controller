@@ -3,7 +3,7 @@
 # Installation in centos or amazon linux 2
 sudo yum update -y
 sudo yum groupinstall -y 'Development Tools'
-sudo yum install -y gcc openssl-devel bzip2-devel libffi-devel
+sudo yum install -y gcc openssl-devel bzip2-devel libffi-devel wget
 wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tar.xz
 tar xf Python-3.9.6.tar.xz
 rm Python-3.9.6.tar.xz
