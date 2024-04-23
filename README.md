@@ -20,4 +20,4 @@ exit
 ./controller.sh
 ```
 
-### Tested on Centos 7
+### Tested on Centos 7 and RHEL 8
