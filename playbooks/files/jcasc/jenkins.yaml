@@ -55,6 +55,7 @@ jenkins:
             emailAddress: "Admin@gmail.com"
         - "apiToken"
   slaveAgentPort: -1
+  systemMessage: "Welcome to my Jenkins Instance configured with Casc"
   views:
   - all:
       name: "all"
