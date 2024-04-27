@@ -11,6 +11,6 @@
   import_playbook: jenkins_playbook.yml
 
 - name: Include tools_playbook
-  import_playbook: docker_playbook_dnf.yml
+  import_playbook: docker_playbook.yml
 
 
