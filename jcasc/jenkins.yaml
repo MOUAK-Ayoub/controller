@@ -9,6 +9,8 @@ jenkins:
     standard:
       excludeClientIPFromCrumb: false
   disableRememberMe: false
+  disabledAdministrativeMonitors:
+  - "jenkins.diagnostics.ControllerExecutorsNoAgents"
   labelAtoms:
   - name: "built-in"
   markupFormatter: "plainText"
@@ -39,7 +41,7 @@ jenkins:
       allowsSignup: false
       enableCaptcha: false
       users:
-      - id: "Admin"
+      - id: "admin"
         name: "Admin"
         properties:
         - "consoleUrlProvider"
@@ -50,7 +52,7 @@ jenkins:
         - "timezone"
         - "experimentalFlags"
         - mailer:
-            emailAddress: ""
+            emailAddress: "Admin@gmail.com"
         - "apiToken"
   slaveAgentPort: -1
   updateCenter:
@@ -80,6 +82,11 @@ security:
     allowedOnController: false
   gitHostKeyVerificationConfiguration:
     sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
+  sSHD:
+    port: -1
+  scriptApproval:
+    approvedScriptHashes:
+    - "SHA512:ae653a5505d2269b46872a2eea85a341f19bce618f3d8f14ee4ae1b6d2920cf64f097929ec7aa06a7f08214fc799ab53433643645ec2b7b99243384e3622a505"
 unclassified:
   buildDiscarders:
     configuredBuildDiscarders:

@@ -5,9 +5,9 @@ sudo yum update -y
 sudo yum groupinstall -y 'Development Tools'
 sudo yum install -y gcc openssl-devel bzip2-devel libffi-devel wget
 wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tar.xz
-tar xf Python-3.9.6.tar.xz
+tar xf Python-3.9.6.tar.xz -C /tmp/
 rm Python-3.9.6.tar.xz
-cd Python-3.9.6
+cd /tmp/Python-3.9.6
 ./configure prefix=/usr/local/python3.9
 sudo make
 sudo make install
