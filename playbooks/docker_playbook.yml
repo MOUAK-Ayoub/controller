@@ -37,10 +37,12 @@
 
     - name: Add the current user to the docker group
       user:
-        name: "{{user}}"
+        name: "{{item}}"
         groups: docker
         append: yes
-
+      loop:
+        - "{{user}}"
+        - jenkins
   handlers:
     - name: Start and enable docker
       systemd:
