@@ -38,7 +38,7 @@
 
     - name: Update JENKINS_JAVA_OPTIONS
       lineinfile:
-        path: "/etc/sysconfig/jenkins"
+        path: "/usr/lib/systemd/system/jenkins.service"
         regexp: ".*-Djava.awt.headless=true.*"
         line: 'JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Djenkins.install.runSetupWizard=false -Djava.io.tmpdir=/var/cache/jenkins/tmp/ "'
         state: present
@@ -46,7 +46,7 @@
     - name: Update JENKINS_ARGS
       become: yes
       lineinfile:
-        path: "/etc/sysconfig/jenkins"
+        path: "/usr/lib/systemd/system/jenkins.service"
         regexp: ".*JENKINS_ARGS=.*"
         line: 'JENKINS_ARGS="--pluginroot=/var/cache/jenkins/plugins"'
         state: present
