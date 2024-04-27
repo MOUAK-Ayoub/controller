@@ -31,7 +31,7 @@
         line: "{{ item }}"
       loop:
         - "Environment=\"JAVA_HOME=/usr/lib/java_{{java_version}}\""
-        -
+
     - name: Set jenkins user to sudo without password
       lineinfile:
         dest: /etc/sudoers
