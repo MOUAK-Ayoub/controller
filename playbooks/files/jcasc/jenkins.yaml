@@ -117,7 +117,7 @@ unclassified:
   gitHubConfiguration:
     apiRateLimitChecker: ThrottleForNormalize
   gitHubPluginConfig:
-    hookUrl: "http://5533aa4e262c.mylabserver.com:8080/github-webhook/"
+    hookUrl: "http://5533aa4e261c.mylabserver.com:8080/github-webhook/"
   globalTimeOutConfiguration:
     operations:
     - "abortOperation"
@@ -133,7 +133,7 @@ unclassified:
     storage: "file"
   location:
     adminAddress: "address not configured yet <nobody@nowhere>"
-    url: "http://5533aa4e262c.mylabserver.com:8080/"
+    url: "http://5533aa4e261c.mylabserver.com:8080/"
   mailer:
     charset: "UTF-8"
     useSsl: false
