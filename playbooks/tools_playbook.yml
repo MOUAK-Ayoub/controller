@@ -10,7 +10,6 @@
         path: "/usr/lib/java_{{java_version}}"
       register: java_dir
 
-
     - name: Download java
       get_url:
         url: "https://builds.openlogic.com/downloadJDK/openlogic-openjdk/{{java_version}}/openlogic-openjdk-{{java_version}}-linux-x64.tar.gz"
