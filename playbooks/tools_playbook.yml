@@ -54,6 +54,8 @@
       loop:
         - export JAVA_HOME=/usr/lib/java_{{java_version}}
         - export M2_HOME=/opt/maven
+        # Jenkins use MAVEN_HOME not M2_HOME
+        - export MAVEN_HOME=/opt/maven
         - export PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH
 
     - name: apply env variables
