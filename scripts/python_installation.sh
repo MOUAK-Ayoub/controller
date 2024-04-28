@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Installation in centos or amazon linux 2
+# Installation tested in centos , amazon linux 2 and RHEL 8
 sudo yum update -y
 sudo yum groupinstall -y 'Development Tools'
 sudo yum install -y gcc openssl-devel bzip2-devel libffi-devel wget
