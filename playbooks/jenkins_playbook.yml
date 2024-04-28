@@ -14,10 +14,9 @@
         key: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
         state: present
 
-
     - name: Install jenkins
       dnf:
-        name: "jenkins"
+        name: "jenkins-{{jenkins_version}}"
         state: latest
 
     - name: Create directories for Jenkins
@@ -32,18 +31,6 @@
         - '/var/cache/jenkins/heapdumps'
         - '/var/lib/jenkins/plugins'
 
-    - name: Update JENKINS_JAVA_OPTIONS
-      lineinfile:
-        path: "/usr/lib/systemd/system/jenkins.service"
-        regexp: ".*-Djava.awt.headless=true.*"
-        line: 'Environment="JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Djenkins.install.runSetupWizard=false -Djava.io.tmpdir=/var/cache/jenkins/tmp/""'
-        state: present
-
-    - name: download jenkins-plugin-manager
-      get_url:
-        url: "https://github.com/jenkinsci/plugin-installation-manager-tool/releases/download/{{plugin_manager_version}}/jenkins-plugin-manager-{{plugin_manager_version}}.jar"
-        dest: /tmp/jenkins-plugin-manager.jar
-
     - name: Copy the jenkins.yaml file
       become: yes
       copy:
@@ -56,16 +43,6 @@
         src: "init.groovy.d/"
         dest: "/var/lib/jenkins/init.groovy.d/"
 
-
-    - name: update JENKINS_HOME ownership
-      become: yes
-      file:
-        path: /var/lib/jenkins
-        owner: jenkins
-        group: jenkins
-        state: directory
-        recurse: yes
-
     - name: Set java_home in systemd/jenkins
       lineinfile:
         dest: /usr/lib/systemd/system/jenkins.service
@@ -75,12 +52,29 @@
         - "Environment=\"JAVA_HOME=/usr/lib/java_{{java_version}}\""
         - 'Environment="JENKINS_ARGS="--pluginroot=/var/cache/jenkins/plugins""'
         - "Environment=\"CASC_JENKINS_CONFIG=/var/lib/jenkins/jenkins.yaml\""
+        - 'Environment="JENKINS_OPTS="-Djava.awt.headless=true  -Djenkins.install.runSetupWizard=false -Djava.io.tmpdir=/var/cache/jenkins/tmp/""'
 
+    - name: download jenkins-cli jar
+      get_url:
+        url: "http://localhost:8080/jnlpJars/jenkins-cli.jar"
+        dest: /tmp/jenkins-cli.jar
 
     - name: Set jenkins user to sudo without password
       lineinfile:
         dest: /etc/sudoers
         line: "jenkins ALL=(ALL) NOPASSWD: ALL"
+
+    - name: Install plugins
+      command: java -jar /tmp/jenkins-cli.jar -s http://localhost:8080 -auth admin:admin install-plugin configuration-as-code
+
+    - name: update JENKINS_HOME ownership
+      become: yes
+      file:
+        path: /var/lib/jenkins
+        owner: jenkins
+        group: jenkins
+        state: directory
+        recurse: yes
 
     - name: daemon-reload to pick up config changes
       ansible.builtin.systemd:
