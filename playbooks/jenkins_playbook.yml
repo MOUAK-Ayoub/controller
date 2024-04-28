@@ -21,7 +21,7 @@
 
     - name: Install jenkins
       yum:
-        name: jenkins-2.440.3
+        name: "jenkins-{{jenkins_version}}"
         state: latest
 
     - name: Create directories for Jenkins
@@ -53,7 +53,7 @@
 
     - name: download jenkins-plugin-manager
       get_url:
-        url:  "{{plugin_manager_jar}}"
+        url: "https://github.com/jenkinsci/plugin-installation-manager-tool/releases/download/{{plugin_manager_version}}/jenkins-plugin-manager-{{plugin_manager_version}}.jar"
         dest: /tmp/jenkins-plugin-manager.jar
 
     - name: Copy the jenkins.yaml file
@@ -70,7 +70,7 @@
 
     - name: run the jenkins-plugin-manager
       become: yes
-      command: java -jar /tmp/jenkins-plugin-manager.jar --jenkins-version 2.440.3 --plugin-file files/jcasc/plugins.yaml --plugin-download-directory /var/lib/jenkins/plugins
+      command: "java -jar /tmp/jenkins-plugin-manager.jar --jenkins-version jenkins-{{jenkins_version}}  --plugin-file files/jcasc/plugins.yaml --plugin-download-directory /var/lib/jenkins/plugins"
 
     - name: update JENKINS_HOME ownership
       become: yes
