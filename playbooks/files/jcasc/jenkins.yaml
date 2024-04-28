@@ -117,7 +117,7 @@ unclassified:
   gitHubConfiguration:
     apiRateLimitChecker: ThrottleForNormalize
   gitHubPluginConfig:
-    hookUrl: "http://5533aa4e261c.mylabserver.com:8080/github-webhook/"
+    hookUrl: "http://5533aa4e263c.mylabserver.com:8080/github-webhook/"
   globalTimeOutConfiguration:
     operations:
     - "abortOperation"
@@ -133,7 +133,7 @@ unclassified:
     storage: "file"
   location:
     adminAddress: "address not configured yet <nobody@nowhere>"
-    url: "http://5533aa4e261c.mylabserver.com:8080/"
+    url: "http://5533aa4e263c.mylabserver.com:8080/"
   mailer:
     charset: "UTF-8"
     useSsl: false
@@ -159,12 +159,12 @@ tool:
       name: "Default"
   jdk:
     installations:
-    - home: "/usr/lib/java_17.0.10+7/"
+    - home: "/usr/lib/java_11.0.23+9/"
       name: "Java 17"
   maven:
     installations:
     - home: "/opt/maven/"
-      name: "Maven 3.6.3"
+      name: "Maven 3.8.5"
   mavenGlobalConfig:
     globalSettingsProvider: "standard"
     settingsProvider: "standard"

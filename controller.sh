@@ -18,8 +18,8 @@ fi
 ansible-playbook  playbooks/main.yml
 
 # If last command executes correctly
-if  (( $?==0 ))
-then
+#if  (( $?==0 ))
+#then
 # Reboot server
-sudo reboot
-fi
+#sudo reboot
+#fi
