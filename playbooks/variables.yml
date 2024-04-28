@@ -5,4 +5,4 @@ user: cloud_user
 java_version: 17.0.10+7
 maven_version: 3.6.3
 jenkins_version: 2.346.1
-plugin_manager_version: 2.5.0
+plugin_manager_version: 2.12.15
