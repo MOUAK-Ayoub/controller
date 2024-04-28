@@ -4,3 +4,4 @@
 user: cloud_user
 java_version: 17.0.10+7
 maven_version: 3.6.3
+plugin_manager_jar: https://github.com/jenkinsci/plugin-installation-manager-tool/releases/download/2.5.0/jenkins-plugin-manager-2.5.0.jar
