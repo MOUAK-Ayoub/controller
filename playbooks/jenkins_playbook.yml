@@ -66,7 +66,7 @@
 
     - name: Install plugins
       command: "java -jar /tmp/jenkins-cli.jar -s http://localhost:8080 -auth admin:admin install-plugin configuration-as-code"
-
+      become: no
     - name: update JENKINS_HOME ownership
       become: yes
       file:
