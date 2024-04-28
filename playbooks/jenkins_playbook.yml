@@ -66,6 +66,7 @@
 
     - name: Install plugins
       command: "java -jar /tmp/jenkins-cli.jar -s http://localhost:8080 -auth admin:admin install-plugin configuration-as-code"
+      # if not become: yes let ansible use sudo java -version which is 1.8 not 11 installed her
       become: no
 
     - name: update JENKINS_HOME ownership
@@ -85,4 +86,4 @@
       ansible.builtin.systemd:
         name: jenkins
         enabled: true
-        state: restart
+        state: restarted
