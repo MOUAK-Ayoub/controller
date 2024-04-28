@@ -43,13 +43,7 @@
         line: 'JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Djenkins.install.runSetupWizard=false -Djava.io.tmpdir=/var/cache/jenkins/tmp/ "'
         state: present
 
-    - name: Update JENKINS_ARGS
-      become: yes
-      lineinfile:
-        path: "/usr/lib/systemd/system/jenkins.service"
-        regexp: ".*JENKINS_ARGS=.*"
-        line: 'JENKINS_ARGS="--pluginroot=/var/cache/jenkins/plugins"'
-        state: present
+
 
     - name: download jenkins-plugin-manager
       get_url:
@@ -68,9 +62,6 @@
         src: "init.groovy.d/"
         dest: "/var/lib/jenkins/init.groovy.d/"
 
-    - name: run the jenkins-plugin-manager
-      become: yes
-      command: "java -jar /tmp/jenkins-plugin-manager.jar   --plugin-file files/jcasc/plugins.yaml --plugin-download-directory /var/lib/jenkins/plugins"
 
     - name: update JENKINS_HOME ownership
       become: yes
@@ -88,6 +79,7 @@
         line: "{{ item }}"
       loop:
         - "Environment=\"JAVA_HOME=/usr/lib/java_{{java_version}}\""
+        - 'JENKINS_ARGS="--pluginroot=/var/cache/jenkins/plugins"'
 
     - name: Set jenkins user to sudo without password
       lineinfile:
