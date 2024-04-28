@@ -66,8 +66,6 @@ globalCredentialsConfiguration:
 appearance:
   prism:
     theme: PRISM
-  themeManager:
-    disableUserThemes: false
 security:
   apiToken:
     creationOfLegacyTokenEnabled: false
