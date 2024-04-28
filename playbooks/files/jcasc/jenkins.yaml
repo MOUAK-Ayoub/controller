@@ -76,8 +76,6 @@ security:
     allowedOnController: false
   gitHostKeyVerificationConfiguration:
     sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
-  sSHD:
-    port: -1
   scriptApproval:
     approvedScriptHashes:
     - "SHA512:ae653a5505d2269b46872a2eea85a341f19bce618f3d8f14ee4ae1b6d2920cf64f097929ec7aa06a7f08214fc799ab53433643645ec2b7b99243384e3622a505"
