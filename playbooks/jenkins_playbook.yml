@@ -21,7 +21,7 @@
 
     - name: Install jenkins
       dnf:
-        name: "jenkins-{{jenkins_version}}"
+        name: "jenkins"
         state: latest
 
     - name: Create directories for Jenkins
