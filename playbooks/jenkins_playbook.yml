@@ -51,7 +51,7 @@
       loop:
         - "Environment=\"JAVA_HOME=/usr/lib/java_{{java_version}}\""
         - 'Environment="JENKINS_ARGS="--pluginroot=/var/cache/jenkins/plugins""'
-        - "Environment=\"CASC_JENKINS_CONFIG=/var/lib/jenkins/jenkins.yaml\""
+        - 'Environment="CASC_JENKINS_CONFIG=/var/lib/jenkins/jenkins.yaml"'
         - 'Environment="JENKINS_OPTS="-Djava.awt.headless=true  -Djenkins.install.runSetupWizard=false -Djava.io.tmpdir=/var/cache/jenkins/tmp/""'
 
     - name: download jenkins-cli jar
@@ -65,7 +65,7 @@
         line: "jenkins ALL=(ALL) NOPASSWD: ALL"
 
     - name: Install plugins
-      command: java -jar /tmp/jenkins-cli.jar -s http://localhost:8080 -auth admin:admin install-plugin configuration-as-code
+      command: "java -jar /tmp/jenkins-cli.jar -s http://localhost:8080 -auth admin:admin install-plugin configuration-as-code"
 
     - name: update JENKINS_HOME ownership
       become: yes
