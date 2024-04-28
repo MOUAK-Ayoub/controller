@@ -48,7 +48,6 @@ jenkins:
         - "myView"
         - preferredProvider:
             providerId: "default"
-        - "theme"
         - "timezone"
         - "experimentalFlags"
         - mailer:
