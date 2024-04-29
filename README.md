@@ -20,7 +20,7 @@ USER="cloud_user"
 echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 exit
 
-sudo yum install -y git
+sudo yum install -y git tmux
 
 git clone https://github.com/MOUAK-Ayoub/controller.git
 cd controller
@@ -28,6 +28,7 @@ chmod +x controller.sh
 
 
 # Execute script
+# Using tmux (screen is deprecated) will be better 
 ./controller.sh
 ```
 
