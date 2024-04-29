@@ -60,3 +60,4 @@
 
     - name: apply env variables
       shell: "source /etc/bashrc"
+      become: no
