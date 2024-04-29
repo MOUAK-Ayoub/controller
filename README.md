@@ -1,6 +1,17 @@
 ### Installation
 
 
+## Setup variables.yaml 
+After the git clone you need to put the versions that you want in the variable.yaml
+Pay attention to the compatability of version
+the repo was tested on:
+RHEL 8
+Java version: 11
+maven: 3.8.5
+jenkins : 2.440.3
+jenkins plugin manager: 2.12.15
+
+#### Change the hostname and user 
 ```bash
 # log as root and let the user sudo without password
 sudo -i
@@ -15,9 +26,9 @@ git clone https://github.com/MOUAK-Ayoub/controller.git
 cd controller
 chmod +x controller.sh
 
+
 # Execute script
 ./controller.sh
 ```
 
-### Tested on  RHEL 8
 

@@ -2,7 +2,7 @@
 ---
 
 user: cloud_user
-hostname: 5533aa4e263c.mylabserver.com
+hostname: 5533aa4e262c.mylabserver.com
 java_version: 11.0.23+9
 maven_version: 3.8.5
 jenkins_version: 2.440.3
