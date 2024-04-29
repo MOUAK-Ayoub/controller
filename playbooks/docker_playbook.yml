@@ -17,7 +17,6 @@
           - docker-latest-logrotate
           - docker-logrotate
           - docker-engine
-          - docker-compose
         state: absent
 
     - name: Set up docker repository
@@ -33,7 +32,6 @@
           - containerd.io
           - docker-buildx-plugin
           - docker-compose-plugin
-      notify: Start and enable docker
 
     - name: Add the current user to the docker group
       user:
