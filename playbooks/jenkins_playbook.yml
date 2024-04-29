@@ -54,20 +54,23 @@
         - 'Environment="CASC_JENKINS_CONFIG=/var/lib/jenkins/jenkins.yaml"'
         - 'Environment="JENKINS_OPTS="-Djava.awt.headless=true  -Djenkins.install.runSetupWizard=false -Djava.io.tmpdir=/var/cache/jenkins/tmp/""'
 
-    - name: download jenkins-cli jar
-      get_url:
-        url: "http://localhost:8080/jnlpJars/jenkins-cli.jar"
-        dest: /tmp/jenkins-cli.jar
-
     - name: Set jenkins user to sudo without password
       lineinfile:
         dest: /etc/sudoers
         line: "jenkins ALL=(ALL) NOPASSWD: ALL"
 
+    - name: download jenkins-plugin-manager jar
+      get_url:
+        url: "https://github.com/jenkinsci/plugin-installation-manager-tool/releases/download/{{plugin_manager_version}}/jenkins-plugin-manager-{{plugin_manager_version}}.jar"
+        dest: /tmp/jenkins-plugin-manager.jar
+
     - name: Install plugins
-      command: "java -jar /tmp/jenkins-cli.jar -s http://localhost:8080 -auth admin:admin install-plugin configuration-as-code"
-      # if not become: yes let ansible use sudo java -version which is 1.8 not 11 installed her
-      become: no
+      # The need to use the JAVA_HOME is linked to the bug that sudo java -version gives 1.8 not 11 installed her
+      command: >
+        "$JAVA_HOME/java -jar  /tmp/jenkins-plugin-manager.jar 
+          --war   /usr/share/java/jenkins.war 
+          --plugin-download-directory /var/lib/jenkins/plugins 
+          --plugin-file  playbooks/files/jcasc/plugins.txt"
 
     - name: update JENKINS_HOME ownership
       become: yes

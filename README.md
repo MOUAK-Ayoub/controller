@@ -22,5 +22,5 @@ chmod +x controller.sh
 ./controller.sh
 ```
 
-### Tested on Centos 7 and RHEL 8
+### Tested on  RHEL 8
 

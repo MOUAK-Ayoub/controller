@@ -143,7 +143,7 @@ tool:
   jdk:
     installations:
     - home: "/usr/lib/java_11.0.23+9/"
-      name: "Java 17"
+      name: "Java 11"
   maven:
     installations:
     - home: "/opt/maven/"
