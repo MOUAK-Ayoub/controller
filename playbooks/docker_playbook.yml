@@ -43,7 +43,10 @@
       loop:
         - "{{user}}"
         - jenkins
-  handlers:
+
+    - name: refresh user docker group membership
+      command: newgrp docker
+
     - name: Start and enable docker
       systemd:
         name: docker
