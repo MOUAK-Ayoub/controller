@@ -17,9 +17,3 @@ fi
 # Install jenkins, docker,..etc
 ansible-playbook  playbooks/main.yml
 
-# If last command executes correctly
-#if  (( $?==0 ))
-#then
-# Reboot server
-#sudo reboot
-#fi
