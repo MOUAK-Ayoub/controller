@@ -31,14 +31,12 @@
         - '/var/cache/jenkins/heapdumps'
         - '/var/lib/jenkins/plugins'
 
-    - name: Copy the jenkins.yaml file
-      become: yes
-      copy:
-        src: "files/jcasc/jenkins.yaml"
+    - name: template the jenkins.yaml file
+      template:
+        src: "files/jcasc/jenkins.yaml.j2"
         dest: "/var/lib/jenkins/jenkins.yaml"
 
     - name: Copy the init files
-      become: yes
       copy:
         src: "init.groovy.d/"
         dest: "/var/lib/jenkins/init.groovy.d/"
@@ -51,7 +49,7 @@
       loop:
         - "Environment=\"JAVA_HOME=/usr/lib/java_{{java_version}}\""
         - 'Environment="JENKINS_ARGS="--pluginroot=/var/cache/jenkins/plugins""'
-        - 'Environment="CASC_JENKINS_CONFIG=/var/lib/jenkins/jenkins.yaml"'
+        - 'Environment="CASC_JENKINS_CONFIG=/var/lib/jenkins/jenkins.yaml.j2"'
         - 'Environment="JENKINS_OPTS="-Djava.awt.headless=true  -Djenkins.install.runSetupWizard=false -Djava.io.tmpdir=/var/cache/jenkins/tmp/""'
 
     - name: Set jenkins user to sudo without password

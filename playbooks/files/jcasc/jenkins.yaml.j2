@@ -1,7 +1,7 @@
 jenkins:
   agentProtocols:
-  - "JNLP4-connect"
-  - "Ping"
+    - "JNLP4-connect"
+    - "Ping"
   authorizationStrategy:
     loggedInUsersCanDoAnything:
       allowAnonymousRead: false
@@ -10,23 +10,23 @@ jenkins:
       excludeClientIPFromCrumb: false
   disableRememberMe: false
   disabledAdministrativeMonitors:
-  - "jenkins.diagnostics.ControllerExecutorsNoAgents"
+    - "jenkins.diagnostics.ControllerExecutorsNoAgents"
   labelAtoms:
-  - name: "built-in"
+    - name: "built-in"
   markupFormatter: "plainText"
   mode: NORMAL
   myViewsTabBar: "standard"
   nodeMonitors:
-  - "architecture"
-  - "clock"
-  - diskSpace:
-      freeSpaceThreshold: "1GiB"
-      freeSpaceWarningThreshold: "2GiB"
-  - "swapSpace"
-  - tmpSpace:
-      freeSpaceThreshold: "1GiB"
-      freeSpaceWarningThreshold: "2GiB"
-  - "responseTime"
+    - "architecture"
+    - "clock"
+    - diskSpace:
+        freeSpaceThreshold: "1GiB"
+        freeSpaceWarningThreshold: "2GiB"
+    - "swapSpace"
+    - tmpSpace:
+        freeSpaceThreshold: "1GiB"
+        freeSpaceWarningThreshold: "2GiB"
+    - "responseTime"
   numExecutors: 2
   primaryView:
     all:
@@ -41,23 +41,23 @@ jenkins:
       allowsSignup: false
       enableCaptcha: false
       users:
-      - id: "admin"
-        name: "Admin"
-        properties:
-        - "consoleUrlProvider"
-        - "myView"
-        - preferredProvider:
-            providerId: "default"
-        - "timezone"
-        - "experimentalFlags"
-        - mailer:
-            emailAddress: "Admin@gmail.com"
-        - "apiToken"
+        - id: "admin"
+          name: "Admin"
+          properties:
+            - "consoleUrlProvider"
+            - "myView"
+            - preferredProvider:
+                providerId: "default"
+            - "timezone"
+            - "experimentalFlags"
+            - mailer:
+                emailAddress: "Admin@gmail.com"
+            - "apiToken"
   slaveAgentPort: -1
   systemMessage: "Welcome to my Jenkins Instance configured with Casc"
   views:
-  - all:
-      name: "all"
+    - all:
+        name: "all"
   viewsTabBar: "standard"
 globalCredentialsConfiguration:
   configuration:
@@ -76,13 +76,10 @@ security:
     allowedOnController: false
   gitHostKeyVerificationConfiguration:
     sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
-  scriptApproval:
-    approvedScriptHashes:
-    - "SHA512:ae653a5505d2269b46872a2eea85a341f19bce618f3d8f14ee4ae1b6d2920cf64f097929ec7aa06a7f08214fc799ab53433643645ec2b7b99243384e3622a505"
-unclassified:
+  unclassified:
   buildDiscarders:
     configuredBuildDiscarders:
-    - "jobBuildDiscarder"
+      - "jobBuildDiscarder"
   buildStepOperation:
     enabled: false
   email-ext:
@@ -96,7 +93,7 @@ unclassified:
       Check console output at $BUILD_URL to view the results.
     defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
     defaultTriggerIds:
-    - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
+      - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
     maxAttachmentSize: -1
     maxAttachmentSizeMb: -1
     precedenceBulk: false
@@ -107,16 +104,16 @@ unclassified:
   gitHubConfiguration:
     apiRateLimitChecker: ThrottleForNormalize
   gitHubPluginConfig:
-    hookUrl: "http://5533aa4e263c.mylabserver.com:8080/github-webhook/"
+    hookUrl: "http://{{hostname}}:8080/github-webhook/"
   globalTimeOutConfiguration:
     operations:
-    - "abortOperation"
+      - "abortOperation"
     overwriteable: false
   junitTestResultStorage:
     storage: "file"
   location:
-    adminAddress: "address not configured yet <nobody@nowhere>"
-    url: "http://5533aa4e263c.mylabserver.com:8080/"
+    adminAddress: "address not configured yet "
+    url: "http://{{hostname}}:8080/"
   mailer:
     charset: "UTF-8"
     useSsl: false
@@ -138,16 +135,16 @@ unclassified:
 tool:
   git:
     installations:
-    - home: "git"
-      name: "Default"
+      - home: "git"
+        name: "Default"
   jdk:
     installations:
-    - home: "/usr/lib/java_11.0.23+9/"
-      name: "Java 11"
+      - home: "/usr/lib/java_{{java_version}}/"
+        name: "Java 11"
   maven:
     installations:
-    - home: "/opt/maven/"
-      name: "Maven 3.8.5"
+      - home: "/opt/maven/"
+        name: "Maven {{maven_version}}"
   mavenGlobalConfig:
     globalSettingsProvider: "standard"
     settingsProvider: "standard"
