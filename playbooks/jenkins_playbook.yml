@@ -67,7 +67,7 @@
     - name: Install plugins
       # The need to use the JAVA_HOME is linked to the bug that sudo java -version gives 1.8 not 11 installed her
       command:
-        "$JAVA_HOME/java -jar  /tmp/jenkins-plugin-manager.jar \
+        "{{ lookup('env', 'JAVA_HOME') }}/java -jar  /tmp/jenkins-plugin-manager.jar \
           --war   /usr/share/java/jenkins.war \
           --plugin-download-directory /var/lib/jenkins/plugins \ 
           --plugin-file  playbooks/files/jcasc/plugins.txt"
