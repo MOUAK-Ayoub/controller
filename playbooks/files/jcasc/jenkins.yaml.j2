@@ -1,7 +1,7 @@
 jenkins:
   agentProtocols:
-    - "JNLP4-connect"
-    - "Ping"
+  - "JNLP4-connect"
+  - "Ping"
   authorizationStrategy:
     loggedInUsersCanDoAnything:
       allowAnonymousRead: false
@@ -10,23 +10,23 @@ jenkins:
       excludeClientIPFromCrumb: false
   disableRememberMe: false
   disabledAdministrativeMonitors:
-    - "jenkins.diagnostics.ControllerExecutorsNoAgents"
+  - "jenkins.diagnostics.ControllerExecutorsNoAgents"
   labelAtoms:
-    - name: "built-in"
+  - name: "built-in"
   markupFormatter: "plainText"
   mode: NORMAL
   myViewsTabBar: "standard"
   nodeMonitors:
-    - "architecture"
-    - "clock"
-    - diskSpace:
-        freeSpaceThreshold: "1GiB"
-        freeSpaceWarningThreshold: "2GiB"
-    - "swapSpace"
-    - tmpSpace:
-        freeSpaceThreshold: "1GiB"
-        freeSpaceWarningThreshold: "2GiB"
-    - "responseTime"
+  - "architecture"
+  - "clock"
+  - diskSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "swapSpace"
+  - tmpSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "responseTime"
   numExecutors: 2
   primaryView:
     all:
@@ -41,23 +41,23 @@ jenkins:
       allowsSignup: false
       enableCaptcha: false
       users:
-        - id: "admin"
-          name: "Admin"
-          properties:
-            - "consoleUrlProvider"
-            - "myView"
-            - preferredProvider:
-                providerId: "default"
-            - "timezone"
-            - "experimentalFlags"
-            - mailer:
-                emailAddress: "Admin@gmail.com"
-            - "apiToken"
+      - id: "admin"
+        name: "Admin"
+        properties:
+        - "consoleUrlProvider"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "Admin@gmail.com"
+        - "apiToken"
   slaveAgentPort: -1
   systemMessage: "Welcome to my Jenkins Instance configured with Casc"
   views:
-    - all:
-        name: "all"
+  - all:
+      name: "all"
   viewsTabBar: "standard"
 globalCredentialsConfiguration:
   configuration:
@@ -76,10 +76,10 @@ security:
     allowedOnController: false
   gitHostKeyVerificationConfiguration:
     sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
-  unclassified:
+unclassified:
   buildDiscarders:
     configuredBuildDiscarders:
-      - "jobBuildDiscarder"
+    - "jobBuildDiscarder"
   buildStepOperation:
     enabled: false
   email-ext:
@@ -93,7 +93,7 @@ security:
       Check console output at $BUILD_URL to view the results.
     defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
     defaultTriggerIds:
-      - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
+    - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
     maxAttachmentSize: -1
     maxAttachmentSizeMb: -1
     precedenceBulk: false
@@ -107,7 +107,7 @@ security:
     hookUrl: "http://{{hostname}}:8080/github-webhook/"
   globalTimeOutConfiguration:
     operations:
-      - "abortOperation"
+    - "abortOperation"
     overwriteable: false
   junitTestResultStorage:
     storage: "file"
@@ -135,16 +135,16 @@ security:
 tool:
   git:
     installations:
-      - home: "git"
-        name: "Default"
+    - home: "git"
+      name: "Default"
   jdk:
     installations:
-      - home: "/usr/lib/java_{{java_version}}/"
-        name: "Java 11"
+    - home: "/usr/lib/java_{{java_version}}/"
+      name: "Java 11"
   maven:
     installations:
-      - home: "/opt/maven/"
-        name: "Maven {{maven_version}}"
+    - home: "/opt/maven/"
+      name: "Maven {{maven_version}}"
   mavenGlobalConfig:
     globalSettingsProvider: "standard"
     settingsProvider: "standard"
