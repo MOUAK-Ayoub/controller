@@ -33,3 +33,6 @@ chmod +x controller.sh
 ```
 
 
+The jenkins port is: 8080
+The artifactory port is: 8081
+
