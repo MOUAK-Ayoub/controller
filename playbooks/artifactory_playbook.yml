@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  become: yes
+  vars_files:
+    - "variables.yml"
+  tasks:
+
+    - name: Download Artifactory repo
+      get_url:
+        url: https://releases.jfrog.io/artifactory/artifactory-rpms/artifactory-rpms.repo
+        dest: /etc/yum.repos.d
+
+    - name: Install Artifactory
+      dnf:
+        name: "*"
+        state: latest
+
+    - name: Install Artifactory
+      dnf:
+        name: "jfrog-artifactory-oss"
+        state: latest
+

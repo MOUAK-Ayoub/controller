@@ -4,13 +4,17 @@
   hosts: localhost
   become: yes
 
-- name: Include tools_playbook
+- name: Install  Tools
   import_playbook: tools_playbook.yml
 
-- name: Include jenkins_playbook
+- name: Install Jenkins
   import_playbook: jenkins_playbook.yml
 
-- name: Include tools_playbook
+- name: Install Docker
   import_playbook: docker_playbook.yml
+
+- name: Install  Artifactory
+  import_playbook: artifactory_playbook.yml
+
 
 
