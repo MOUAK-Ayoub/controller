@@ -34,5 +34,11 @@ chmod +x controller.sh
 
 
 The jenkins port is: 8080
-The artifactory port is: 8081
+The artifactory port is: 8082
+Authentication for jenkins (Configured through init.groovy.d):
+user: admin
+password: admin
+Authentication for artifactory (default):
+user: admin
+password: password
 

@@ -77,3 +77,4 @@ workflow-support:latest
 ws-cleanup:latest
 snyk-security-scanner:latest
 job-dsl:latest
+artifactory:latest
