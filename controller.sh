@@ -11,6 +11,12 @@ then
     ./scripts/python_installation.sh
 fi
 
+
+if  [[ TO-DO ]]
+then
+    echo "Installing pip3 "
+    sudo yum install -y python3-pip
+fi
 # Install last ansible version
 ./scripts/ansible_installation.sh
 

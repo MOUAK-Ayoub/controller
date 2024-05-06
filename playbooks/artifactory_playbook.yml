@@ -10,7 +10,7 @@
         url: https://releases.jfrog.io/artifactory/artifactory-rpms/artifactory-rpms.repo
         dest: /etc/yum.repos.d
 
-    - name: Install Artifactory
+    - name: Update all
       dnf:
         name: "*"
         state: latest
