@@ -24,9 +24,9 @@
       ansible.builtin.systemd:
         daemon_reload: yes
 
-    - name: Start jenkins
+    - name: Start Artifactory
       ansible.builtin.systemd:
-        name: artifacory
+        name: artifactory
         enabled: true
         state: restarted
 
