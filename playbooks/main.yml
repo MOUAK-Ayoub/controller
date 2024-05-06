@@ -10,11 +10,12 @@
 - name: Install Jenkins
   import_playbook: jenkins_playbook.yml
 
+- name: Install  Artifactory
+  import_playbook: artifactory_playbook.yml
+
 - name: Install Docker
   import_playbook: docker_playbook.yml
 
-- name: Install  Artifactory
-  import_playbook: artifactory_playbook.yml
 
 
 

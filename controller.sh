@@ -5,8 +5,9 @@ python_version="3.9"
 chmod +x scripts/*
 
 # check if the python version contains 3.9
-if [[ "$(python3 --version)" =~ ${python_version} ]]
+if ! [[ "$(python3 --version)" =~ ${python_version} ]]
 then
+    echo "Installing python 3.9.6"
     ./scripts/python_installation.sh
 fi
 
