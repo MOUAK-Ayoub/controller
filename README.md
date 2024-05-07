@@ -42,3 +42,9 @@ Authentication for artifactory (default):
 user: admin
 password: password
 
+# TO-DO
+Add aws cli installation 
+Add terraform installation
+Create user in artifactory
+Add configuring artifactory maven repo
+Add jenkins spring batch pipeline as casc
