@@ -45,6 +45,15 @@ password: password
 # TO-DO
 Add aws cli installation 
 Add terraform installation
+``` bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum -y install terraform
+```
 Create user in artifactory
 Add configuring artifactory maven repo
 Add jenkins spring batch pipeline as casc
