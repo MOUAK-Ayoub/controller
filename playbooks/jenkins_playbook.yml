@@ -4,6 +4,11 @@
   vars_files:
     - "variables.yml"
   tasks:
+    - name: Install fontconfig (needed for jenkins in rhel9)
+      dnf:
+        name: "fontconfig"
+        state: latest
+
     - name: Download Long Term Jenkins release
       get_url:
         url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
