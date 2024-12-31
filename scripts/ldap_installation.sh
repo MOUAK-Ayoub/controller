@@ -76,7 +76,7 @@ Alias /phpldapadmin /var/www/html/phpldapadmin/public
 </VirtualHost>
 # then you can access the phpldapadmin app with http://ec2-ip:80
 
-# Change the memory limit in /etc/php.ini from 128M to 512M (128 is not enough)
+# Change the memory limit in /etc/php.ini from 128M to 512M (or more if needed, 128 is not enough)
 memory_limit = 512M
 
 reboot
