@@ -22,6 +22,15 @@ objectClass: organization
 dc: my-domain
 o: My Organization
 EOF
+
+# To use posixaccount,inetorgperson,.. schemas we need:
+sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
+sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
+sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
+sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/misc.ldif
+
+sudo systemctl restart  slapd
+
 ##################################################################################################################
 # Install phpldapadmin in apache server
 sudo yum update -y
@@ -66,4 +75,9 @@ Alias /phpldapadmin /var/www/html/phpldapadmin/public
   </Directory>
 </VirtualHost>
 # then you can access the phpldapadmin app with http://ec2-ip:80
+
+# Change the memory limit in /etc/php.ini from 128M to 512M (or more if needed, 128 is not enough)
+memory_limit = 512M
+
+reboot
 ##################################################################################################################
