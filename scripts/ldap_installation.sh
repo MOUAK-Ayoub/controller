@@ -23,7 +23,7 @@ dc: my-domain
 o: My Organization
 EOF
 
-# To use posixaccount,inetorgperson,.. schema we need:
+# To use posixaccount,inetorgperson,.. schemas we need:
 sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
 sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
 sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
