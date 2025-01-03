@@ -1,3 +1,5 @@
+# Amazon Linux 2023 is used, there is resemblance with CentOS stream
+
 # Install openldap server
 sudo yum install openldap-servers openldap-clients
 sudo systemctl enable  slapd
@@ -64,7 +66,8 @@ sudo chown -R apache:apache /var/www/html/phpldapadmin
 sudo chmod -R 755 /var/www/html/phpldapadmin
 sudo chmod -R 775 /var/www/html/phpldapadmin/storage
 
-# add in /etc/httpd/conf.d/phpldapadmin.conf
+
+cat > /etc/httpd/conf.d/phpldapadmin.conf <<EOF
 Alias /phpldapadmin /var/www/html/phpldapadmin/public
 <VirtualHost *:80>
   DocumentRoot /var/www/html/phpldapadmin/public
@@ -74,10 +77,33 @@ Alias /phpldapadmin /var/www/html/phpldapadmin/public
     Require all granted
   </Directory>
 </VirtualHost>
+EOF
 # then you can access the phpldapadmin app with http://ec2-ip:80
 
 # Change the memory limit in /etc/php.ini from 128M to 512M (or more if needed, 128 is not enough)
-memory_limit = 512M
+# Try this command to test
+# sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php.ini
+
 
 reboot
 ##################################################################################################################
+
+# Configure LDAPS with SSL
+# We suppose that the server.crt and server.key are already generated
+# The certificate must be also in the /etc/pki/tls/certs directory
+
+sudo cp server.crt /etc/openldap/certs
+sudo cp server.key /etc/openldap/certs
+
+sudo ldapmodify -Y EXTERNAL -H ldapi:///  <<EOF
+dn: cn=config
+changetype: modify
+replace: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/openldap/certs/server.crt
+-
+replace: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/openldap/certs/server.key
+-
+replace: olcTLSVerifyClient
+olcTLSVerifyClient: never
+EOF
