@@ -85,6 +85,18 @@ EOF
 # sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php.ini
 
 
+# and in .env file
+LDAP_port=363
+LDAP_SSL=true
+LDAP_TLS=false
+# To allow selfsigned certificate in phpldapadmin (laravel)
+# In /var/www/html/phpldapadmin/config/ldap.php
+# add this line in the options array
+# LDAP_OPT_X_TLS_REQUIRE_CERT is a predefined constant in PHP see https://www.php.net/manual/en/ldap.constants.php#constant.ldap-opt-x-tls-require-cert
+'options' => [
+    LDAP_OPT_X_TLS_REQUIRE_CERT => LDAP_OPT_X_TLS_ALLOW, // Allow self-signed certificates
+],
+
 reboot
 ##################################################################################################################
 
